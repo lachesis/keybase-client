@@ -5,12 +5,8 @@
 
 package mounter
 
-import (
-	"fmt"
+import "fmt"
 
-	"github.com/keybase/client/go/libkb"
-)
-
-func IsMounted(g *libkb.GlobalContext, dir string) (bool, error) {
+func IsMounted(dir string) (bool, error) {
 	return false, fmt.Errorf("IsMounted unsupported on this platform")
 }

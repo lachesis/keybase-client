@@ -10,16 +10,16 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/keybase/client/go/libkb"
+	"github.com/keybase/client/go/logger"
 )
 
-func IsMounted(g *libkb.GlobalContext, dir string) (bool, error) {
+func IsMounted(dir string, log logger.Logger) (bool, error) {
 	mountInfo, err := getMountInfo(dir)
 	if err != nil {
 		return false, err
 	}
 
-	g.Log.Debug("Mount info: %s", mountInfo)
+	log.Debug("Mount info: %s", mountInfo)
 	if strings.Contains(mountInfo, "@kbfuse") {
 		return true, nil
 	}
